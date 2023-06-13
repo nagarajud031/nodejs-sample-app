@@ -30,6 +30,7 @@ node {
         script {
             def commitSHA = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
             sh "sudo docker tag chinnagoud031/devops:latest chinnagoud031/devops:$commitSHA"
+            //Push Docker image
             sh "sudo docker push chinnagoud031/devops:$commitSHA"
         }
     }
