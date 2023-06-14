@@ -20,7 +20,7 @@ node {
         //def commitSHA = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
         sh 'sudo docker build -t chinnagoud031/devops .'
     }
-    stage('Push Docker Image') {
+    stage('Docker Login') {
         // Login to Docker Hub
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USERNAME')]) {
             sh "sudo docker login -u ${env.DOCKER_HUB_USERNAME} -p ${env.DOCKER_HUB_PASSWORD}"
